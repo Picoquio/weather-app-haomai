@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { WeatherContext } from "../context/WeatherContext"
 import { WeatherAPIResponse } from "../api/interfaces";
-import { SnowFlakes } from "../components/animated/SnowFlakes";
+import { useNavigate } from "react-router-dom";
 
 enum WeatherThemes {
   RAINNING = 'Rainning',
@@ -12,12 +12,17 @@ enum WeatherThemes {
 
 export const WeatherPage = () => {
   const { weather } = useContext(WeatherContext);
+  const navigate = useNavigate();
   const [theme, setTheme] = useState<WeatherThemes | null>(null);
 
   useEffect(() => {
-    setAppropiateTheme();
+    handleInit();
   }, [])
 
+  const handleInit = () => {
+    if (weather === null) navigate('/');
+    else setAppropiateTheme();
+  }
 
   const setAppropiateTheme = () => {
     const weatherCode: number = weather.weather[0].id;
@@ -39,7 +44,7 @@ export const WeatherPage = () => {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-r from-red-200 to-purple-300">
-        <SnowFlakes />
+
       </div>
       {/* <div>WeatherPage. El theme es: {theme}</div>
       <pre>
