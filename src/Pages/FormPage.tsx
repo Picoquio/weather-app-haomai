@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { IWeatherArguments } from "../api/interfaces";
 import { GetWeather } from "../api/openWeatherMap";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { WeatherContext } from "../context/WeatherContext";
 
 export const FormPage = () => {
+  const { weather, setWeather } = useContext(WeatherContext);
+
   const [loadingRequest, setLoadingRequest] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -29,6 +32,8 @@ export const FormPage = () => {
       notifyFetchError();
       return;
     }
+    //TODO: set context acá
+    setWeather(weatherResponse.data)
     navigateToWeatherPage();
   }
 
