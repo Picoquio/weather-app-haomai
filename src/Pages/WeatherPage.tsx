@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { WeatherContext } from "../context/WeatherContext"
 import { WeatherAPIResponse } from "../api/interfaces";
+import { SnowFlakes } from "../components/animated/SnowFlakes";
 
 enum WeatherThemes {
   RAINNING = 'Rainning',
@@ -16,7 +17,7 @@ export const WeatherPage = () => {
   useEffect(() => {
     setAppropiateTheme();
   }, [])
-  
+
 
   const setAppropiateTheme = () => {
     const weatherCode: number = weather.weather[0].id;
@@ -37,10 +38,13 @@ export const WeatherPage = () => {
 
   return (
     <>
-      <div>WeatherPage. El theme es: {theme}</div>
+      <div className="min-h-screen bg-gradient-to-r from-red-200 to-purple-300">
+        <SnowFlakes />
+      </div>
+      {/* <div>WeatherPage. El theme es: {theme}</div>
       <pre>
         {JSON.stringify(weather.weather[0].id, null, 3)}
-      </pre>
+      </pre> */}
     </>
 
   )
