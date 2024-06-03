@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import HaomaiLogo from '../assets/haomai_logo.png';
+import HaomaiLogo from '../../public/haomai_logo.png';
 
 export const Navbar = () => {
     const navigate = useNavigate();

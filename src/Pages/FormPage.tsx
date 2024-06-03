@@ -32,7 +32,7 @@ export const FormPage = () => {
       notifyFetchError();
       return;
     }
-    //TODO: set context acá
+
     setWeather(weatherResponse.data)
     navigateToWeatherPage();
   }
@@ -46,20 +46,20 @@ export const FormPage = () => {
   };
 
   return (
-    <div className='flex items-center justify-center min-h-screen '>
+    <div className='flex items-center justify-center min-h-screen'>
       <div className='w-full max-w-lg px-10 py-8 mx-auto bg-white rounded-lg shadow-xl'>
         <div className='max-w-md mx-auto space-y-6'>
 
-          <h2 className="text-2xl font-bold">Titulo acá</h2>
+          <h2 className="text-2xl font-bold">Weather finder</h2>
 
           <div className='text-base leading-3'>
-            <p className='font-normal text-gray-700'>Ingrese latitud y longitud para ver el clima</p>
+            <p className=' text-gray-700'>Please enter latitude and longitude.</p>
           </div>
 
 
           {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="border-b border-gray-900/10 pb-12">
+            <div className="pb-12">
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
                   <label htmlFor="latitude" className="block text-sm font-medium leading-6 text-gray-900">Latitude</label>
@@ -69,7 +69,8 @@ export const FormPage = () => {
                       type="number"
                       id="latitude"
                       step="any"
-                      className={`${errors.latitude ? "errorInput" : "normalInput"}`} />
+                      className={`${errors.latitude ? "errorInput" : "normalInput"}`} 
+                      placeholder="E.g. 42.9860431"/>
                     {errors.latitude?.type === 'max' && <p className="text-red-600">Max value: 90</p>}
                     {errors.latitude?.type === 'min' && <p className="text-red-600">Min value: -90</p>}
                     {errors.latitude?.type === 'required' && <p className="text-red-600">Latitude is required</p>}
@@ -83,7 +84,8 @@ export const FormPage = () => {
                       type="number"
                       id="longitude"
                       step="any"
-                      className={`${errors.longitude ? "errorInput" : "normalInput"}`} />
+                      className={`${errors.longitude ? "errorInput" : "normalInput"}`}
+                      placeholder="E.g. -1.8067988" />
                     {errors.longitude?.type === 'max' && <p className="text-red-600">Max value: 180</p>}
                     {errors.longitude?.type === 'min' && <p className="text-red-600">Min value: -180</p>}
                     {errors.longitude?.type === 'required' && <p className="text-red-600">Longitude is required</p>}

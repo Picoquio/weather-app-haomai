@@ -11,3 +11,24 @@
 
 }
 
+.rain {
+    background-image: url("https://www.thoughtco.com/thmb/beiCvc1QcvpjjJPXI6g0wG18MxI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/drops-of-rain-on-glass-838815210-5a823cc0a18d9e0036e325e2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.clear {
+    background-image: url("https://auroralabsnorway.com/blog/wp-content/uploads/2020/05/sun-3588618_1920-1200x800.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cloudy {
+    background-image: url("https://www.metoffice.gov.uk/binaries/content/gallery/metofficegovuk/hero-images/weather/cloud/altocumulus.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.snow {
+    background-image: url("https://www.visitfinland.com/dam/jcr:6be00c01-1e28-45d0-a435-a5101d473132/Snowy%20trees%20in%20Salla%20National%20Park_%20Eeva%20M%C3%A4kinen_optimized.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -7,7 +7,7 @@ import { WeatherProvider } from './context/WeatherProvider';
 function App() {
   return (
     <WeatherProvider>
-      <div className="min-h-screen bg-gradient-to-r from-cyan-200 to-blue-300">
+      <div className="min-h-screen bg-gradient-to-r from-red-200 to-blue-300">
         <Navbar />
         <Routes>
           <Route path="/" element={<FormPage />} />
