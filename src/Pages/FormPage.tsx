@@ -7,22 +7,32 @@ import { GetWeather } from "../api/openWeatherMap";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { WeatherContext } from "../context/WeatherContext";
 
+/**
+ * Página inicial donde se muestra al usuario el formulario de latitud y longitud
+ */
 export const FormPage = () => {
-  const { weather, setWeather } = useContext(WeatherContext);
+  // Para setear información sobre el clima en el Context
+  const { setWeather } = useContext(WeatherContext);
 
+  //Para gestionar visualmente estados de carga (spinner)
   const [loadingRequest, setLoadingRequest] = useState<boolean>(false);
 
+  //Navegación programática provista por React Router.
   const navigate = useNavigate();
+  const navigateToWeatherPage = () => {
+    navigate('/weather-details');
+  };
 
+  //Implementación del formulario a través del paquete React Hook Form
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isValid },
   } = useForm<IWeatherArguments>({
     mode: "onChange",  // This ensures that validation is checked on each input change
   })
 
+  //Lógica ejecutada al hacer submit del formulario
   const onSubmit: SubmitHandler<IWeatherArguments> = async (data) => {
     setLoadingRequest(true);
     const weatherResponse = await GetWeather(data);
@@ -37,13 +47,12 @@ export const FormPage = () => {
     navigateToWeatherPage();
   }
 
+  /**
+   * Se si hay error al hacer el Fetch, se notifica al usuario mediante un toast (paquete react-hot-toast) 
+   */
   const notifyFetchError = () => {
     return toast.error('Error while fetching weather data')
   }
-
-  const navigateToWeatherPage = () => {
-    navigate('/weather-details');
-  };
 
   return (
     <div className='flex items-center justify-center min-h-screen'>
@@ -56,8 +65,6 @@ export const FormPage = () => {
             <p className=' text-gray-700'>Please enter latitude and longitude.</p>
           </div>
 
-
-          {/* Form */}
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="pb-12">
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -69,8 +76,8 @@ export const FormPage = () => {
                       type="number"
                       id="latitude"
                       step="any"
-                      className={`${errors.latitude ? "errorInput" : "normalInput"}`} 
-                      placeholder="E.g. 42.9860431"/>
+                      className={`${errors.latitude ? "errorInput" : "normalInput"}`}
+                      placeholder="E.g. 42.9860431" />
                     {errors.latitude?.type === 'max' && <p className="text-red-600">Max value: 90</p>}
                     {errors.latitude?.type === 'min' && <p className="text-red-600">Min value: -90</p>}
                     {errors.latitude?.type === 'required' && <p className="text-red-600">Latitude is required</p>}
@@ -102,8 +109,6 @@ export const FormPage = () => {
 
             </div>
           </form>
-
-          {/* Fin form */}
 
         </div>
       </div>
