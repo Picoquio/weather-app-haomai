@@ -46,7 +46,6 @@ export const WeatherPage = () => {
     } else if (weatherCode >= 801 && weatherCode <= 804) {
       setTheme(WeatherThemes.CLOUDY);
     }
-    console.log(theme)
   }
 
   const setBackgroundImage = () => {
