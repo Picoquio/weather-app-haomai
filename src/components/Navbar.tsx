@@ -25,7 +25,7 @@ export const Navbar = () => {
                         </div>
                         <div className="hidden  sm:block">
                             <div className="flex space-x-4">
-                                <p className=" text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Haomai's Weather Forecast</p>
+                                <p className=" text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Haomai's Weather Finder</p>
                             </div>
                         </div>
                     </div>
