@@ -1,4 +1,3 @@
-import { useFetch } from "../hooks/useFetch";
 import { IWeatherArguments, WeatherAPIResponse, WeatherUnits } from "./interfaces";
 
 interface APICallObject {

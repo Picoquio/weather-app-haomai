@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react"
-import { WeatherContext } from "../context/WeatherContext"
-import { WeatherAPIResponse } from "../api/interfaces";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { WeatherContext } from "../context/WeatherContext";
 
 enum WeatherThemes {
   RAINNING = 'Rainning',
